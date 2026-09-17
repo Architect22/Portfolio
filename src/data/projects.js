@@ -8,7 +8,7 @@ const projects = [
         role: 'Founder / Developer — Boku Studios',
         description: 'A commercial game shipped under my own studio, with a playable Steam demo.',
         tech: ['Unity', 'C#'],
-        image: '/images/featherborn.png',
+        image: '../images/Featherborn/featherborn1.png',
         links: [{ label: 'Steam Demo', url: 'https://store.steampowered.com/...' }],
       },
             {

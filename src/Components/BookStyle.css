@@ -40,7 +40,7 @@
 
   background-image:
     linear-gradient(rgba(232, 211, 163, 0.35), rgba(232, 211, 163, 0.35)),
-    url('../images/pixel-art-parchment-texture.jpg');
+    url('../images/Textures/pixel-art-parchment-texture.jpg');
   background-size: cover;
   background-position: center;
   background-blend-mode: multiply;
@@ -75,7 +75,7 @@
   justify-content: center;
   background-image:
   linear-gradient(rgba(232, 211, 163, 0.35), rgba(232, 211, 163, 0.35)),
-  url('../images/pixel-art-cover.jpg');
+  url('../images/Textures/pixel-art-cover.jpg');
 }
 
 .page-content.cover {
@@ -169,7 +169,7 @@
   font-size: 0.7rem;
   background-image:
   linear-gradient(rgba(232, 211, 163, 0.35), rgba(232, 211, 163, 0.35)),
-  url('../images/pixel-art-cover.jpg');
+  url('../images/Textures/pixel-art-cover.jpg');
 }
 
 /* ---------- Custom content-block pages ---------- */
