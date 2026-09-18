@@ -8,8 +8,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3vh 3vw;
+  padding: 1.5vh 1.5vw; /* was 3vh 3vw — less wasted margin around the book */
   box-sizing: border-box;
+}
+
+.flipbook-shell {
+  height: min(92vh, 1050px);
+  aspect-ratio: 1.3125; /* double-page width:height ratio — see note below */
+  width: auto;
 }
 
 .book-wrapper {
@@ -19,17 +25,25 @@
   width: fit-content;
 }
 
-.flipbook-shell {
-  width: min(88vw, 1100px);
-  height: min(84vh, 820px);
-}
-
 .flip-book {
   width: 100% !important;
   height: 100% !important;
 }
 
 /* ---------- Base page: parchment look ---------- */
+/* Hide the "back" hint on the right-hand page of a two-page spread —
+   going "back" from the right page would just flip within the same
+   spread, so it only makes sense on the left page. In portrait/mobile
+   mode (single page shown), the --landscape wrapper class isn't
+   present, so this rule doesn't apply and the hint shows normally. */
+.stf__wrapper.--landscape .stf__item.--right .page-hint-left {
+  display: none;
+}
+
+.stf__wrapper.--landscape .stf__item.--left .page-hint-right {
+  display: none;
+}
+
 .page {
   position: relative;
   color: #4a3418;
@@ -95,10 +109,20 @@
   opacity: 0.8;
 }
 
-.open-hint {
+.page-hint-right {
   position: absolute;
   bottom: 16px;
   right: 20px;
+  font-size: 1rem;
+  color: #f3e4c2;
+  opacity: 0.65;
+  animation: hint-pulse 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+.page-hint-left {
+  position: absolute;
+  bottom: 16px;
+  left: 20px;
   font-size: 1rem;
   color: #f3e4c2;
   opacity: 0.65;
@@ -172,6 +196,84 @@
   url('../images/Textures/pixel-art-cover.jpg');
 }
 
+/* ---------- Split layout (text left, image right) ---------- */
+.page.split {
+  border-radius: 18px;
+  background-image: linear-gradient(135deg, #8b6fd6, #6f8fd6);
+  border-color: #5a4a9e;
+  color: #f3f0ff;
+}
+
+.page-content.split {
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+}
+
+.split-text {
+  flex: 1 1 55%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.split-text .content-heading {
+  color: #f3f0ff;
+}
+
+.split-text .content-text {
+  color: rgba(243, 240, 255, 0.85);
+}
+
+.split-link {
+  margin-top: auto;
+  font-size: 0.6rem;
+  color: #f3f0ff;
+  text-decoration: none;
+  border-bottom: 2px solid currentColor;
+  align-self: flex-start;
+}
+
+.split-image {
+  flex: 1 1 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.split-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.split-image-placeholder {
+  width: 70%;
+  height: 70%;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Stack vertically on mobile instead of squeezing columns */
+@media (max-width: 640px) {
+  .page-content.split {
+    flex-direction: column;
+  }
+
+  .split-image {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+  }
+  .flipbook-shell {
+    aspect-ratio: 0.656; /* single-page: width / height, e.g. 420/640 */
+    width: auto;
+    height: 78vh;
+  }
+}
+
 /* ---------- Custom content-block pages ---------- */
 .page-content.custom {
   gap: 14px;
@@ -235,14 +337,17 @@
 }
 
 .book-tab {
-  width: 68px;
-  height: 60px;
+  width: 140px;
+  min-height: 60px;
+  padding: 10px 14px;
   border: 3px solid #3a2510;
   border-left: none;
-  clip-path: polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%);
+  clip-path: polygon(0 0, 92% 0, 100% 50%, 92% 100%, 0 100%);
   color: #fff;
   font-family: 'Press Start 2P', monospace;
-  font-size: 1.3rem;
+  font-size: 0.65rem;
+  line-height: 1.4;
+  text-align: center;
   cursor: pointer;
   box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25);
   transition: transform 0.12s ease, box-shadow 0.12s ease;
@@ -259,7 +364,7 @@
   opacity: 1;
   box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
   filter: brightness(1.15);
-  width: 74px;
+  width: 150px;
 }
 
 .book-tab.active:hover {
@@ -282,4 +387,23 @@
   .book-tab.active {
     width: 56px;
   }
+}
+/* ---------- Grouped tabs ---------- */
+.book-tabs {
+  gap: 20px; /* was 10px — now the gap between tab groups, not individual tabs */
+}
+
+.tab-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tab-group-label {
+  font-size: 0.45rem;
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-left: 4px;
+  margin-bottom: 2px;
 }

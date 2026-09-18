@@ -3,6 +3,17 @@ import HTMLFlipBook from 'react-pageflip';
 import projects from '../data/projects';
 import './BookStyle.css';
 
+function PageHint({ isCover }) {
+  return (
+    <>
+      {!isCover && <span className="page-hint page-hint-left">← back</span>}
+      <span className="page-hint page-hint-right">
+        {isCover ? 'open the book →' : 'turn page →'}
+      </span>
+    </>
+  );
+}
+
 // Page objects can now carry `pageClassName` (extra class) and
 // `pageStyle` (inline style object) so any single page can override
 // layout/background/etc without touching the shared CSS.
@@ -18,7 +29,7 @@ const CoverPage = React.forwardRef(({ name, tagline, pageClassName = '', pageSty
       <h1>{name}</h1>
       <p>{tagline}</p>
     </div>
-    <span className="open-hint">open the book →</span>
+    <PageHint isCover />
   </div>
 ));
 
@@ -46,6 +57,48 @@ const OverviewPage = React.forwardRef(({ project, page }, ref) => (
         </div>
       )}
     </div>
+    <PageHint />
+  </div>
+));
+
+const CustomPage = React.forwardRef(({ page }, ref) => (
+  <div className={`page ${page.pageClassName || ''}`} style={page.pageStyle} ref={ref}>
+    <div className="page-content custom">
+      {page.blocks.map((block, i) => (
+        <Block key={i} block={block} />
+      ))}
+    </div>
+    <PageHint />
+  </div>
+));
+
+const SplitPage = React.forwardRef(({ page }, ref) => (
+  <div className={`page split ${page.pageClassName || ''}`} style={page.pageStyle} ref={ref}>
+    <div className="page-content split">
+      <div className="split-text">
+        {page.heading && <h3 className="content-heading">{page.heading}</h3>}
+        {page.paragraphs?.map((p, i) => (
+          <p key={i} className="content-text">{p}</p>
+        ))}
+        {page.link && (
+          <a className="split-link" href={page.link.url} target="_blank" rel="noreferrer">
+            {page.link.label}
+          </a>
+        )}
+      </div>
+      <div className="split-image">
+        {page.image ? (
+          <img src={page.image} alt={page.imageAlt || ''} />
+        ) : (
+          <svg viewBox="0 0 100 100" className="split-image-placeholder">
+            <rect x="2" y="2" width="96" height="96" fill="none" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="2" y1="2" x2="98" y2="98" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="98" y1="2" x2="2" y2="98" stroke="currentColor" strokeWidth="1.5" />
+          </svg>
+        )}
+      </div>
+    </div>
+    <PageHint />
   </div>
 ));
 
@@ -75,28 +128,30 @@ function Block({ block }) {
   }
 }
 
-const CustomPage = React.forwardRef(({ page }, ref) => (
-  <div className={`page ${page.pageClassName || ''}`} style={page.pageStyle} ref={ref}>
-    <div className="page-content custom">
-      {page.blocks.map((block, i) => (
-        <Block key={i} block={block} />
-      ))}
-    </div>
-  </div>
-));
-
 function renderProjectPage(project, page, key) {
   if (page.type === 'custom') return <CustomPage key={key} page={page} />;
+  if (page.type === 'split') return <SplitPage key={key} page={page} />;
   return <OverviewPage key={key} project={project} page={page} />;
 }
 
-const TAB_COLORS = ['#c0392b', '#2d6ea3', '#4a8a3f', '#8e3f9e'];
+// Order categories appear in the tab list. Add 'Product Design' entries
+// here once those projects exist — anything not listed falls into
+// "Other" at the end automatically, so nothing silently disappears.
+const CATEGORY_ORDER = ['Game Development', 'Web Development', 'Product Design'];
+
+// Base hue per category — tabs within a category are shades of this.
+const CATEGORY_COLORS = {
+  'Game Development': ['#c0392b', '#a93226', '#922b21'],
+  'Web Development': ['#2d6ea3', '#245a85', '#1c4666'],
+  'Product Design': ['#4a8a3f', '#3d7233', '#2f5a27'],
+  Other: ['#8e3f9e', '#763383', '#5e2768'],
+};
 
 function Book() {
   const bookRef = useRef(null);
   const [currentPage, setCurrentPage] = useState(0);
 
-  const { flatPages, projectRanges } = useMemo(() => {
+  const { flatPages, groupedTabs } = useMemo(() => {
     const flatPages = [];
     const projectRanges = [];
     let cursor = 1;
@@ -111,7 +166,29 @@ function Book() {
       projectRanges.push({ startIndex, endIndex, project });
     });
 
-    return { flatPages, projectRanges };
+    // Bucket by category, preserving CATEGORY_ORDER; anything with an
+    // unrecognized/missing category lands in "Other" rather than
+    // vanishing from the tab list.
+    const buckets = {};
+    projectRanges.forEach((range) => {
+      const cat = CATEGORY_ORDER.includes(range.project.category)
+        ? range.project.category
+        : 'Other';
+      if (!buckets[cat]) buckets[cat] = [];
+      buckets[cat].push(range);
+    });
+
+    const orderedCategories = [
+      ...CATEGORY_ORDER.filter((c) => buckets[c]?.length),
+      ...(buckets.Other?.length ? ['Other'] : []),
+    ];
+
+    const groupedTabs = orderedCategories.map((category) => ({
+      category,
+      items: buckets[category],
+    }));
+
+    return { flatPages, groupedTabs };
   }, []);
 
   const lastPageIndex = flatPages.length + 1;
@@ -134,9 +211,9 @@ function Book() {
             width={420}
             height={640}
             minWidth={280}
-            maxWidth={560}
+            maxWidth={900}
             minHeight={420}
-            maxHeight={820}
+            maxHeight={1200}
             size="stretch"
             maxShadowOpacity={0.5}
             drawShadow={true}
@@ -147,9 +224,7 @@ function Book() {
             onFlip={handleFlip}
           >
             <CoverPage name="Ben Brown" tagline="Developer & Storyteller" />
-
             {flatPages}
-
             <Page className="back-cover">
               <p>Thanks for reading — see more at linktr.ee/bentombrown</p>
             </Page>
@@ -158,17 +233,18 @@ function Book() {
 
         {!isCoverOrBack && (
           <div className="book-tabs">
-            {projectRanges.map(({ startIndex, endIndex, project }, i) => {
-              const isActive = currentPage >= startIndex && currentPage <= endIndex;
+            {groupedTabs.map(({ category, items }, i) => {
+              const isActive = currentPage >= items[0].startIndex && currentPage <= items[items.length - 1].endIndex;
+              const palette = CATEGORY_COLORS[category] || CATEGORY_COLORS.Other;
               return (
                 <button
-                  key={project.id}
+                  key={category}
                   className={`book-tab ${isActive ? 'active' : ''}`}
-                  style={{ background: TAB_COLORS[i % TAB_COLORS.length] }}
-                  onClick={() => goToProject(startIndex)}
-                  title={project.title}
+                  style={{ background: palette[0] }}
+                  onClick={() => goToProject(items[0].startIndex)}
+                  title={category}
                 >
-                  {project.tabIcon || project.title[0]}
+                  {category}
                 </button>
               );
             })}
