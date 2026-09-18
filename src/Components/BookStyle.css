@@ -53,7 +53,7 @@
   box-sizing: border-box;
 
   background-image:
-    linear-gradient(rgba(232, 211, 163, 0.35), rgba(232, 211, 163, 0.35)),
+    linear-gradient(rgba(232, 211, 163, 0.178), rgba(232, 211, 163, 0.3)),
     url('../images/Textures/pixel-art-parchment-texture.jpg');
   background-size: cover;
   background-position: center;
@@ -97,11 +97,13 @@
   justify-content: center;
   text-align: center;
   gap: 14px;
+  color: #1d1911;
 }
 
 .page-content.cover h1 {
   font-size: 1.4rem;
   line-height: 1.6;
+  color: #c9beb0;
 }
 
 .page-content.cover p {
@@ -137,17 +139,18 @@
 
 /* ---------- Project pages ---------- */
 .page-content.project h2 {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   line-height: 1.5;
   margin: 0 0 8px;
-  color: #4a3418;
+  color: #fafafa;
+  font-family: 'PixelFont';
 }
 
 .project-role {
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #8a6a3a;
+  color: #57462c;
   margin: 0 0 10px;
 }
 
@@ -177,7 +180,7 @@
 
 .project-links a {
   font-size: 0.7rem;
-  color: #4a6a8a;
+  color: #2263a5;
   text-decoration: none;
   border-bottom: 2px solid currentColor;
   margin-right: 12px;
@@ -283,7 +286,7 @@
   font-size: 0.9rem;
   line-height: 1.5;
   margin: 0 0 4px;
-  color: #4a3418;
+  color: #c9beb0;
 }
 
 .content-text {
@@ -320,7 +323,7 @@
 
 .content-links a {
   font-size: 0.7rem;
-  color: #4a6a8a;
+  color: #84b6e7;
   text-decoration: none;
   border-bottom: 2px solid currentColor;
 }
