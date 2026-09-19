@@ -2,9 +2,15 @@ import featherborn1 from '../images/Featherborn/featherborn1.png';
 import featherborn2 from '../images/Featherborn/featherborn2.png';
 import giftsOfHope1 from '../images/GiftsOfHope/giftsOfHope1.png';
 import multiplayer1 from '../images/Multiplayer/multiplayer1.png';
+import multiplayer2 from '../images/Multiplayer/multiplayer2.png';
+import multiplayer3 from '../images/Multiplayer/multiplayer3.png';
+import multiplayer4 from '../images/Multiplayer/multiplayer4.png';
+import multiplayer5 from '../images/Multiplayer/multiplayer5.png';
 import survey1 from '../images/Survey/survey1.png';
 import seniorDesign1 from '../images/SeniorDesign/senior1.png';
 import dungeon1 from '../images/Dungeon/dungeon1.webp';
+import dungeon2 from '../images/Dungeon/dungeon3.webp';
+import dungeon3 from '../images/Dungeon/dungeon2.webp';
 import stomper1 from '../images/Stomper/stomper1.webp';
 const projects = [
   {
@@ -44,7 +50,15 @@ const projects = [
         role: 'Game Developer',
         description: 'A 2D dungeon crawler built with Construct3. The game was originally a game jam entry, but was later expanded into a full game with multiple levels and enemies.',
         tech: ['Construct3'],
-        image: dungeon1,
+        image: dungeon1, dungeon3,
+        links: [],
+      },
+      {
+        type: 'overview',
+        role: 'Animation and Art',
+        description: 'All the art and animations in the game were hand drawn by me and animated in editor. The game has 2 large cutscenes and many sprite sheet animations.',
+        tech: ['Construct3','Pixel Art','Timeline Animation'],
+        image: dungeon2,
         links: [],
       },
     ],
@@ -78,12 +92,18 @@ const projects = [
         links: [],
       },
       {
-        type: 'overview',
-        role: 'Frontend / Multiplayer Developer',
-        description: 'A multiplayer game built with Android Studio and LibGDX, featuring a custom server and client architecture.',
-        tech: ['Android Studio', 'LibGDX'],
-        image: multiplayer1,
-        links: [],
+        type: 'custom',
+        blocks: [
+          { type: 'heading', text: 'Level Design' },
+          {
+            type: 'row',
+            children: [
+              { type: 'image', src: multiplayer2, alt: 'Level layout' },
+              { type: 'image', src: multiplayer2, alt: 'Level layout' },
+            ],
+          },
+          { type: 'text', text: 'Early levels were built as flat corridors, but playtesting showed players got lost without visual landmarks.' },
+        ],
       },
     ],
   },

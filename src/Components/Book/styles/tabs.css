@@ -1,0 +1,55 @@
+.book-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 5;
+  margin-top: 60px;
+  flex-shrink: 0;
+}
+
+.book-tab {
+  width: 140px;
+  min-height: 60px;
+  padding: 10px 14px;
+  border: 3px solid #3a2510;
+  border-left: none;
+  clip-path: polygon(0 0, 92% 0, 100% 50%, 92% 100%, 0 100%);
+  color: #fff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+  line-height: 1.4;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  opacity: 0.75;
+}
+
+.book-tab:hover {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
+.book-tab.active {
+  transform: translateX(8px);
+  opacity: 1;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
+  filter: brightness(1.15);
+  width: 150px;
+}
+
+.book-tab.active:hover {
+  transform: translateX(8px);
+}
+
+@media (max-width: 640px) {
+  .book-tab {
+    width: 100px;
+    min-height: 44px;
+    font-size: 0.5rem;
+  }
+
+  .book-tab.active {
+    width: 108px;
+  }
+}

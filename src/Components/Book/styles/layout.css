@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.book-stage {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5vh 1.5vw;
+  box-sizing: border-box;
+}
+
+.book-wrapper {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  width: fit-content;
+}
+
+.flipbook-shell {
+  height: min(92vh, 1050px);
+  aspect-ratio: 1.3125; /* (2 × page width) / page height — recalc if HTMLFlipBook's width/height props change */
+  width: auto;
+}
+
+.flip-book {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+@media (max-width: 640px) {
+  .flipbook-shell {
+    aspect-ratio: 0.656; /* single-page: width / height */
+    width: auto;
+    height: 78vh;
+  }
+}

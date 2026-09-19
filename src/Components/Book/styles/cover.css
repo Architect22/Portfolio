@@ -1,0 +1,27 @@
+.page.cover {
+  position: relative;
+   background-image:
+    linear-gradient(rgba(232, 211, 163, 0.35), rgba(232, 211, 163, 0.35)),
+    url('../../../images/Textures/pixel-art-cover.jpg');
+  color: #f3e4c2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-content.cover {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.page-content.cover h1 {
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+
+.page-content.cover p {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
