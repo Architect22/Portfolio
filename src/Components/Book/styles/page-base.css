@@ -5,9 +5,10 @@
   image-rendering: pixelated;
   border: 4px solid #6b4423;
   box-sizing: border-box;
+  overflow: hidden; /* NEW — prevents content from ever spilling past the page's own bounds */
 
   background-image:
-    linear-gradient(rgba(232, 211, 163, 0.2), rgba(232, 211, 163, 0.2)),
+    linear-gradient(rgba(232, 211, 163, 0.35), rgba(232, 211, 163, 0.35)),
     url('../../../images/Textures/pixel-art-parchment-texture.jpg');
   background-size: cover;
   background-position: center;
@@ -23,6 +24,8 @@
 .page-content {
   height: 100%;
   width: 100%;
+  min-height: 0; /* NEW — lets this flex child actually shrink to fit .page,
+                    instead of growing past it and pushing content out of bounds */
   padding: 24px 20px;
   box-sizing: border-box;
   display: flex;
