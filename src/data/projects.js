@@ -322,36 +322,36 @@ const projects = [
       },
     ],
   },
-  {
-    id: 'bug-gladiator',
-    title: 'Bug Gladiator Card Game',
-    category: 'Product Design',
-    pages: [
-      {
-        type: 'overview',
-        role: 'Solo Developer',
-        description: "A card battler game that I developed for a class",
-        tech: ['Dextrous'],
-        image: gladiator1,
-        links: [{label:'Rulesheet', url:'https://docs.google.com/document/d/1_b8jVcpokbVyF9HljSbf1HGmvLDl24Lwb4v0XlcAIXw/edit?tab=t.0#heading=h.fzfvv1lq517x'},
-          {label:'Sellsheet',url:'https://docs.google.com/document/d/1_b8jVcpokbVyF9HljSbf1HGmvLDl24Lwb4v0XlcAIXw/edit?tab=t.lc84w4mfla6j'}],
-      },
-      {
-        type: 'custom',
-        blocks: [
-          { type: 'heading', text: 'Bug Gladiator Card Game' },
-          { type: 'text', text: 'Different Card Types'},
-          {
-            type: 'row',
-            children: [
-              { type: 'image', src: gladiator2, alt: 'Survey question screen' },
-              { type: 'image', src: gladiator3, alt: 'Survey question screen' },
-            ],
-          },
-        ],
-      },
-    ],
-  },
+  // {
+  //   id: 'bug-gladiator',
+  //   title: 'Bug Gladiator Card Game',
+  //   category: 'Product Design',
+  //   pages: [
+  //     {
+  //       type: 'overview',
+  //       role: 'Solo Developer',
+  //       description: "A card battler game that I developed for a class",
+  //       tech: ['Dextrous'],
+  //       image: gladiator1,
+  //       links: [{label:'Rulesheet', url:'https://docs.google.com/document/d/1_b8jVcpokbVyF9HljSbf1HGmvLDl24Lwb4v0XlcAIXw/edit?tab=t.0#heading=h.fzfvv1lq517x'},
+  //         {label:'Sellsheet',url:'https://docs.google.com/document/d/1_b8jVcpokbVyF9HljSbf1HGmvLDl24Lwb4v0XlcAIXw/edit?tab=t.lc84w4mfla6j'}],
+  //     },
+  //     {
+  //       type: 'custom',
+  //       blocks: [
+  //         { type: 'heading', text: 'Bug Gladiator Card Game' },
+  //         { type: 'text', text: 'Different Card Types'},
+  //         {
+  //           type: 'row',
+  //           children: [
+  //             { type: 'image', src: gladiator2, alt: 'Survey question screen' },
+  //             { type: 'image', src: gladiator3, alt: 'Survey question screen' },
+  //           ],
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
   
 ];
 
