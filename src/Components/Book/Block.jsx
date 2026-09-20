@@ -41,6 +41,17 @@ export default function Block({ block, onExpand }) {
           ))}
         </div>
       );
+    
+    case 'column':
+      return (
+        <div className="content-column">
+          {block.children.map((child, i) => (
+            <div key={i} className="content-column-item">
+              <Block block={child} onExpand={onExpand} />
+            </div>
+          ))}
+        </div>
+      );
 
     case 'gallery':
       return (

@@ -85,11 +85,16 @@ function Book() {
             className="flip-book"
             onFlip={handleFlip}
           >
-            <CoverPage name="Ben Brown" tagline="Developer & Storyteller" />
+            <CoverPage name="Benjamin Brown" tagline="Web, Game, UI/UX Developer" />
             {flatPages}
-            <Page className="back-cover">
-              <p>Thanks for reading — see more at linktr.ee/bentombrown</p>
-            </Page>
+              <Page className="back-cover">
+                <p>
+                  Thanks for reading - see more at{' '}
+                  <a href="https://linktr.ee/bentombrown" target="_blank" rel="noreferrer">
+                    linktr.ee/bentombrown
+                  </a>
+                </p>
+              </Page>
           </HTMLFlipBook>
         </div>
 

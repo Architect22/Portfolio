@@ -4,7 +4,7 @@ import PageHint from './PageHint';
 import './styles/split.css';
 
 const SplitPage = React.forwardRef(({ page, onExpand }, ref) => (
-  <div className={`page split ${page.pageClassName || ''}`} style={page.pageStyle} ref={ref}>
+  <div className={`page ${page.pageClassName || ''}`} style={page.pageStyle} ref={ref}>
     <div className="page-content split">
       {page.heading && <h2 className="split-heading">{page.heading}</h2>}
 
@@ -13,11 +13,6 @@ const SplitPage = React.forwardRef(({ page, onExpand }, ref) => (
           {page.paragraphs?.map((p, i) => (
             <p key={i} className="content-text">{p}</p>
           ))}
-          {page.link && (
-            <a className="split-link" href={page.link.url} target="_blank" rel="noreferrer">
-              {page.link.label}
-            </a>
-          )}
         </div>
 
         <div className="split-image">
@@ -32,6 +27,14 @@ const SplitPage = React.forwardRef(({ page, onExpand }, ref) => (
           )}
         </div>
       </div>
+
+      {page.link && (
+        <div className="page-footer">
+          <div className="project-links">
+            <a href={page.link.url} target="_blank" rel="noreferrer">{page.link.label}</a>
+          </div>
+        </div>
+      )}
     </div>
     <PageHint />
   </div>

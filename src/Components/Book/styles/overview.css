@@ -1,15 +1,16 @@
 .page-content.project h2 {
   font-size: 1.1rem;
+  font-family: 'PixelFont';
   line-height: 1.5;
   margin: 0 0 8px;
-  color: #4a3418;
+  color: #33230e;
 }
 
 .project-role {
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #8a6a3a;
+  color: #33230e;
   margin: 0 0 10px;
 }
 
@@ -23,10 +24,24 @@
 .project-tech {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center; /* was implicitly left-aligned */
   gap: 6px;
   list-style: none;
   padding: 0;
-  margin: 0 0 12px;
+  margin: 0;
+}
+
+.project-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.project-links a {
+  font-size: 0.7rem;
+  color: #4a6a8a;
+  text-decoration: none;
+  border-bottom: 2px solid currentColor;
 }
 
 .project-tech li {
@@ -35,12 +50,4 @@
   border: 2px solid #6b4423;
   color: #4a3418;
   padding: 4px 6px;
-}
-
-.project-links a {
-  font-size: 0.7rem;
-  color: #4a6a8a;
-  text-decoration: none;
-  border-bottom: 2px solid currentColor;
-  margin-right: 12px;
 }

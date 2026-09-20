@@ -1,20 +1,20 @@
-.page.split {
-  border-radius: 18px;
-  background-image: linear-gradient(135deg, #8b6fd6, #6f8fd6);
-  border-color: #5a4a9e;
-  color: #f3f0ff;
-}
-
+/* No custom background/color overrides — split pages now inherit the
+   same parchment texture + brown text as every other page type. */
 .page-content.split {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  overflow-x: hidden;
 }
 
 .split-heading {
-  color: #f3f0ff;
-  margin: 0;
-  flex-shrink: 0;
+  font-size: 1.1rem;
+  font-family: 'PixelFont';
+  line-height: 1.5;
+  margin: 0 0 4px;
+  color: #33230e;
+  text-align: center;
+  width: 100%;
 }
 
 .split-row {
@@ -23,43 +23,53 @@
   align-items: center;
   gap: 24px;
   flex: 1;
+  min-width: 0;
 }
 
 .split-text {
-  flex: 1 1 55%;
+  flex: 1 1 35%;
+  min-width: 0;
   display: flex;
   flex-direction: column;
+  color: #33230e;
   gap: 10px;
 }
 
 .split-text .content-text {
-  color: rgba(243, 240, 255, 0.85);
+  color: #4a3418;
 }
 
 .split-link {
   margin-top: auto;
   font-size: 0.6rem;
-  color: #f3f0ff;
+  color: #4a6a8a;
   text-decoration: none;
   border-bottom: 2px solid currentColor;
   align-self: flex-start;
 }
 
 .split-image {
-  flex: 1 1 40%;
+  flex: 1 1 65%;
+  min-width: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   aspect-ratio: 1 / 1;
-  border: 2px solid rgba(255, 255, 255, 0.7);
   border-radius: 4px;
   overflow: hidden;
+}
+
+.split-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .split-image-placeholder {
   width: 70%;
   height: 70%;
-  color: rgba(255, 255, 255, 0.7);
+  color: #6b4423;
 }
 
 @media (max-width: 640px) {
