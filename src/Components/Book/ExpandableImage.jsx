@@ -3,23 +3,37 @@ import './styles/image.css';
 
 export default function ExpandableImage({ src, alt, onExpand }) {
   const btnRef = useRef(null);
+  const imgRef = useRef(null);
 
   useEffect(() => {
-    const btn = btnRef.current;
-    if (!btn) return;
-
-    // Native listeners (not React synthetic) so we intercept BEFORE
-    // page-flip's own drag/gesture listener sees the event.
+    // Only block the events that page-flip uses to START a drag/flip
+    // gesture. Deliberately NOT including 'click' — React's onClick is
+    // attached at the root via event delegation, so stopping propagation
+    // on click here would prevent it from ever reaching React at all.
     const stop = (e) => e.stopPropagation();
     const events = ['mousedown', 'pointerdown', 'touchstart'];
-    events.forEach((evt) => btn.addEventListener(evt, stop));
 
-    return () => events.forEach((evt) => btn.removeEventListener(evt, stop));
+    const btn = btnRef.current;
+    const img = imgRef.current;
+
+    if (btn) events.forEach((evt) => btn.addEventListener(evt, stop));
+    if (img) events.forEach((evt) => img.addEventListener(evt, stop));
+
+    return () => {
+      if (btn) events.forEach((evt) => btn.removeEventListener(evt, stop));
+      if (img) events.forEach((evt) => img.removeEventListener(evt, stop));
+    };
   }, []);
 
   return (
     <div className="expandable-image">
-      <img src={src} alt={alt || ''} />
+      <img
+        ref={imgRef}
+        src={src}
+        alt={alt || ''}
+        onClick={() => onExpand({ src, alt })}
+        className="expandable-image-img"
+      />
       <button
         ref={btnRef}
         className="expand-btn"

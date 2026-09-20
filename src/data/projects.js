@@ -1,7 +1,7 @@
 // Featherborn
 import featherborn1 from '../images/Featherborn/featherborn1.png';
 import featherborn2 from '../images/Featherborn/featherborn2.png';
-import featherborn3 from '../images/Featherborn/Featherborn3.png'; // note: capital F in filename
+import featherborn3 from '../images/Featherborn/featherborn3.png';
 
 // Stomper
 import stomper1 from '../images/Stomper/stomper1.webp';
@@ -16,6 +16,7 @@ import multiplayer4 from '../images/Multiplayer/multiplayer4.png';
 import multiplayer5 from '../images/Multiplayer/multiplayer5.png';
 
 // Dungeon — using dungeon2/3/4 per your file tree (dungeon1.webp wasn't shown there)
+import dungeon1 from '../images/Dungeon/dungeon1.webp';
 import dungeon2 from '../images/Dungeon/dungeon2.webp';
 import dungeon3 from '../images/Dungeon/dungeon3.webp';
 import dungeon4 from '../images/Dungeon/dungeon4.webp';
@@ -38,151 +39,14 @@ import senior4 from '../images/SeniorDesign/senior4.png';
 import senior5 from '../images/SeniorDesign/senior5.png';
 import senior6 from '../images/SeniorDesign/senior6.png';
 import senior7 from '../images/SeniorDesign/senior7.png';
-import senior8 from '../images/SeniorDesign/Senior8.png'; // note: capital S in filename
+import senior8 from '../images/SeniorDesign/senior8.png';
 import senior9 from '../images/SeniorDesign/senior9.png';
-// const projects = [
-//   {
-//     id: 'featherborn',
-//     title: 'Featherborn',
-//     category: 'Game Dev',
-//     pages: [
-//       {
-//         type: 'overview',
-//         role: 'Founder / Developer — Boku Studios',
-//         description: 'A commercial game shipped under my own studio, with a playable Steam demo.',
-//         tech: ['Unity', 'C#'],
-//         image: featherborn1,
-//         links: [{ label: 'Steam Demo', url: 'https://store.steampowered.com/app/3082940/Featherborn/' }],
-//       },
-//       {
-//         type: 'custom',
-//         blocks: [
-//           { type: 'heading', text: 'Level Design' },
-//           {
-//             type: 'row',
-//             children: [
-//               { type: 'image', src: featherborn2, alt: 'Level layout' },
-//               { type: 'image', src: featherborn2, alt: 'Level layout' },
-//             ],
-//           },
-//           { type: 'text', text: 'Early levels were built as flat corridors, but playtesting showed players got lost without visual landmarks.' },
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     id: 'lost-dungeon',
-//     title: 'The Lost Dungeon',
-//     category: 'Game Dev',
-//     pages: [
-//       {
-//         type: 'overview',
-//         role: 'Game Developer',
-//         description: 'A 2D dungeon crawler built with Construct3. The game was originally a game jam entry, but was later expanded into a full game with multiple levels and enemies.',
-//         tech: ['Construct3'],
-//         image: dungeon1, dungeon3,
-//         links: [],
-//       },
-//       {
-//         type: 'overview',
-//         role: 'Animation and Art',
-//         description: 'All the art and animations in the game were hand drawn by me and animated in editor. The game has 2 large cutscenes and many sprite sheet animations.',
-//         tech: ['Construct3','Pixel Art','Timeline Animation'],
-//         image: dungeon2,
-//         links: [],
-//       },
-//     ],
-//   },
-//   {
-//     id: 'stomper',
-//     title: 'Stomper',
-//     category: 'Game Dev',
-//     pages: [
-//       {
-//         type: 'overview',
-//         role: 'Game Developer',
-//         description: 'An early career game project built with Construct3. The game was a simple platformer where the player had to stomp on enemies to defeat them.',
-//         tech: ['Construct3'],
-//         image: stomper1,
-//         links: [],
-//       },
-//     ],
-//   },
-//   {
-//     id: 'multiplayer',
-//     title: 'Multiplayer Class Project',
-//     category: 'Game Dev',
-//     pages: [
-//       {
-//         type: 'overview',
-//         role: 'Frontend / Multiplayer Developer',
-//         description: 'A multiplayer game built with Android Studio and LibGDX, featuring a custom server and client architecture.',
-//         tech: ['Android Studio', 'LibGDX'],
-//         image: multiplayer1,
-//         links: [],
-//       },
-//       {
-//         type: 'custom',
-//         blocks: [
-//           { type: 'heading', text: 'Level Design' },
-//           {
-//             type: 'row',
-//             children: [
-//               { type: 'image', src: multiplayer2, alt: 'Level layout' },
-//               { type: 'image', src: multiplayer2, alt: 'Level layout' },
-//             ],
-//           },
-//           { type: 'text', text: 'Early levels were built as flat corridors, but playtesting showed players got lost without visual landmarks.' },
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     id: 'senior-design',
-//     title: 'Senior Design Class Dashboard',
-//     category: 'Web Dev',
-//     pages: [
-//       {
-//         type: 'overview',
-//         role: 'Frontend Developer, UI/UX Designer',
-//         description: 'A dashboard for a senior design class, built with Typescript, React, and ported with Electron.',
-//         tech: ['Typescript', 'React', 'Electron'],
-//         image: seniorDesign1,
-//         links: [],
-//       },
-//     ],
-//   },
-//   {
-//     id: 'gifts-of-hope',
-//     title: 'Gifts of Hope',
-//     category: 'Web Dev',
-//     pages: [
-//       {
-//         type: 'overview',
-//         role: 'Web Developer',
-//         description: 'A charity website for a local non-profit, built with Google Sites',
-//         tech: ['Google Sites'],
-//         image: giftsOfHope1,
-//         links: [],
-//       },
-//     ],
-//   },
-//   {
-//     id: 'survey',
-//     title: 'Video Game Personality Test',
-//     category: 'Web Dev',
-//     pages: [
-//       {
-//         type: 'overview',
-//         role: 'Frontend Developer',
-//         description: 'A personality test that recommends video games based on the user\'s answers, built with HTML, CSS, and JavaScript, with mySQL Database integration' ,
-//         tech: ['HTML', 'CSS', 'JavaScript', 'mySQL'],
-//         image: survey1,
-//         links: [],
-//       },
-//     ],
-//   },
-// ];
+
+// Bug Gladiator
+import gladiator1 from '../images/Bug_Gladiator/gladiator1.png';
+import gladiator2 from '../images/Bug_Gladiator/gladiator2.png';
+import gladiator3 from '../images/Bug_Gladiator/gladiator3.png';
+
 const projects = [
   // ---------- GAME DEV ----------
   {
@@ -196,7 +60,10 @@ const projects = [
         description: 'Featherborn is a commercial Unity game shipped under my own studio, with a playable Steam demo.',
         tech: ['Unity', 'C#'],
         image: featherborn1,
-        links: [{ label: 'Steam Demo', url: 'https://store.steampowered.com/app/3082940/Featherborn/' }],
+        links: [{ label: 'Steam Demo', url: 'https://store.steampowered.com/app/3082940/Featherborn/' },
+          { label: 'Pitch Deck', url: 'https://impress.games/press-kit/boku-studios/featherborn' },
+          {label: 'Kickstarter', url: 'https://www.kickstarter.com/projects/featherborn/featherborn-a-2d-isometric-openworld-game'},
+          {label: 'GDD', url: 'https://docs.google.com/document/d/1z4WgnZqFgJuGBmLDFSqjFXH8HN6bEt9mVZFjGLOpYys/edit?usp=sharing'}],
       },
       {
         type: 'split',
@@ -221,16 +88,16 @@ const projects = [
   },
   {
     id: 'stomper',
-    title: 'Stomper', // TODO: confirm exact title
+    title: 'Stomper',
     category: 'Game Dev',
     pages: [
       {
         type: 'overview',
-        role: 'Solo Developer', // TODO
+        role: 'Solo Developer',
         description: 'An early career game project built with Construct 3. The game was a simple platformer where the player had to stomp on enemies to defeat them.',
         tech: ['Construct 3'],
         image: stomper1,
-        links: [],
+        links: [{label: 'Stomper on Scirra Arcade', url:'https://www.construct.net/en/free-online-games/stomper-33634/play'}],
       },
       {
         type: 'custom',
@@ -250,7 +117,51 @@ const projects = [
               type: 'image',
               src: stomper3,
               alt: 'Stomper boss fight',
-              caption: 'Stomp ability defeating an enemy', // optional — remove if not needed
+              caption: 'Stomp ability defeating an enemy',
+            },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'dungeon',
+    title: 'The Lost Dungeon',
+    category: 'Game Dev',
+    pages: [
+      {
+        type: 'overview',
+        role: 'Solo Developer',
+        description: 'Lost Dungeon was the first "real" game I made in highschool. It started as a game jam entry, and then evolved into a full game. It was built with Construct3 and Aesprite',
+        tech: ['Construct3','Aesprite'],
+        image: dungeon2,
+        links: [{label:'The Lost Dungeon - Scirra Arcade', url:'https://www.construct.net/en/free-online-games/lost-dungeon-38261/play'}],
+      },
+      {
+        type: 'custom',
+        blocks: [
+          { type: 'heading', text: 'The Lost Dungeon' }, // TODO
+          {
+            type: 'column',
+            children: [
+            {
+              type: 'image',
+              src: dungeon1,
+              alt: 'Stomper boss fight',
+              caption: 'Evil Eye Boss',
+            },
+            {
+              type: 'image',
+              src: dungeon4,
+              alt: 'Stomper boss fight',
+              caption: 'Level Design',
+            },
+            {
+              type: 'image',
+              src: dungeon3,
+              alt: 'Stomper boss fight',
+              caption: 'Cutscene Artwork',
             },
             ],
           },
@@ -281,151 +192,48 @@ const projects = [
               { type: 'text', text: 'Changing level screens'},
               { type: 'image', src: multiplayer2, alt: 'Feature 1' },
               { type: 'image', src: multiplayer3, alt: 'Feature 2' },
+              { type: 'image', src: multiplayer4, alt: 'Feature 2' },
+              
             ],
           },
         ],
       },
+      
       {
         type: 'split',
-        heading: 'Server Architecture', // TODO
-        paragraphs: ['TODO: describe the client/server design.'],
+        heading: 'Multiplayer Class Project', // TODO
+        paragraphs: ['Achievements and stats were tracked through an SQL database'],
         image: multiplayer5,
         imageAlt: 'Server architecture diagram',
       },
     ],
   },
-  {
-    id: 'dungeon',
-    title: 'Dungeon Project', // TODO: confirm real title
-    category: 'Game Dev',
-    pages: [
-      {
-        type: 'overview',
-        role: 'Solo Developer', // TODO
-        description: 'TODO: description of the dungeon project.',
-        tech: [], // TODO
-        image: dungeon2,
-        links: [],
-      },
-      {
-        type: 'custom',
-        blocks: [
-          { type: 'heading', text: 'Environment Art' }, // TODO
-          {
-            type: 'gallery',
-            columns: 2,
-            images: [
-              { src: dungeon3, alt: 'Dungeon area 1' },
-              { src: dungeon4, alt: 'Dungeon area 2' },
-            ],
-          },
-        ],
-      },
-    ],
-  },
+  
 
-  // ---------- WEB DEV (guessed — reassign if wrong) ----------
+  // ---------- WEB DEV ----------
   {
-    id: 'survey',
-    title: 'Video Game Personality Test',
+    id: 'senior-design',
+    title: 'Senior Design Project',
     category: 'Web Dev',
     pages: [
       {
         type: 'overview',
-        role: 'Frontend Developer',
-        description: "A personality test that recommends video games based on the user's answers, built with HTML, CSS, and JavaScript, with mySQL Database integration.",
-        tech: ['HTML', 'CSS', 'JavaScript', 'mySQL'],
-        image: survey1,
-        links: [],
-      },
-      {
-        type: 'custom',
-        blocks: [
-          { type: 'heading', text: 'Question Flow' }, // TODO
-          {
-            type: 'row',
-            children: [
-              { type: 'text', text: 'TODO: describe the question/scoring logic.' },
-              { type: 'image', src: survey2, alt: 'Survey question screen' },
-            ],
-          },
-        ],
-      },
-      {
-        type: 'custom',
-        blocks: [
-          { type: 'heading', text: 'Results Page' }, // TODO
-          {
-            type: 'gallery',
-            columns: 2,
-            images: [
-              { src: survey3, alt: 'Results screen 1' },
-              { src: survey4, alt: 'Results screen 2' },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: 'gifts-of-hope',
-    title: 'Gifts of Hope', // TODO: confirm real title
-    category: 'Web Dev', // TODO: confirm — could be Product Design
-    pages: [
-      {
-        type: 'overview',
-        role: 'TODO',
-        description: 'TODO: description.',
-        tech: [], // TODO
-        image: giftsOfHope1,
-        links: [],
-      },
-      {
-        type: 'split',
-        heading: 'TODO Section Title',
-        paragraphs: ['TODO: paragraph about this project.'],
-        image: giftsOfHope2,
-        imageAlt: 'Gifts of Hope screen',
-      },
-    ],
-  },
-  {
-    id: 'senior-design',
-    title: 'Senior Design Project', // TODO: confirm real title
-    category: 'Web Dev', // TODO: confirm
-    pages: [
-      {
-        type: 'overview',
-        role: 'TODO',
-        description: 'TODO: description of the senior design capstone project.',
-        tech: [], // TODO
+        role: 'Frontend, UI/UX Developer',
+        description: 'My senior design had me form a team and build a web app for a real client. The web app was a dashboard for a class so that all the information about the teams could be viewed and edited on one cohesive platform',
+        tech: ['React','Typescript','Electron','SQL'],
         image: senior1,
         links: [],
       },
       {
         type: 'custom',
         blocks: [
-          { type: 'heading', text: 'System Overview' }, // TODO
+          { type: 'heading', text: 'Senior Design Project' },
           {
-            type: 'gallery',
-            columns: 3,
-            images: [
-              { src: senior2, alt: 'Senior design screen 1' },
-              { src: senior3, alt: 'Senior design screen 2' },
-              { src: senior4, alt: 'Senior design screen 3' },
-            ],
-          },
-        ],
-      },
-      {
-        type: 'custom',
-        blocks: [
-          { type: 'heading', text: 'Technical Details' }, // TODO
-          {
-            type: 'row',
+            type: 'column',
             children: [
-              { type: 'text', text: 'TODO: explain a specific technical challenge.' },
-              { type: 'image', src: senior5, alt: 'Senior design diagram' },
+              { type: 'text', text: 'Color Themes'},
+              { type: 'image', src: senior2, alt: 'Senior design screen 2' },
+              { type: 'image', src: senior3, alt: 'Senior design screen 3' },
             ],
           },
         ],
@@ -433,13 +241,27 @@ const projects = [
       {
         type: 'custom',
         blocks: [
-          { type: 'heading', text: 'More Screens' },
+          { type: 'heading', text: 'Senior Design Project' },
+          {
+            type: 'column',
+            children: [
+              { type: 'text', text: 'Team Analysis Screens'},
+              { type: 'image', src: senior5, alt: 'Senior design screen 5' },
+              { type: 'image', src: senior6, alt: 'Senior design screen 6' },
+              { type: 'image', src: senior7, alt: 'Senior design screen 7' },
+            ],
+          },
+        ],
+      },
+      {
+        type: 'custom',
+        blocks: [
+          { type: 'heading', text: 'Senior Design Project' },
+          { type: 'text', text: 'Mobile View'},
           {
             type: 'gallery',
             columns: 2,
             images: [
-              { src: senior6, alt: 'Senior design screen 4' },
-              { src: senior7, alt: 'Senior design screen 5' },
               { src: senior8, alt: 'Senior design screen 6' },
               { src: senior9, alt: 'Senior design screen 7' },
             ],
@@ -448,6 +270,89 @@ const projects = [
       },
     ],
   },
+  {
+    id: 'gifts-of-hope',
+    title: 'Gifts of Hope',
+    category: 'Web Dev',
+    pages: [
+      {
+        type: 'overview',
+        role: 'Solo Developer',
+        description: 'A website I built for the Gifts of Hope nonprofit LLC with Google Sites',
+        tech: ['Google Sites'],
+        image: giftsOfHope1,
+        links: [{label: 'Gifts of Hope Website', url:'https://www.giftsofhopeiowa.org/home'}],
+      },
+      {
+        type: 'split',
+        heading: 'Gifts of Hope',
+        paragraphs: ['Live service website built with the founders feedback'],
+        image: giftsOfHope2,
+        imageAlt: 'Gifts of Hope screen',
+      },
+    ],
+  },
+  {
+    id: 'survey',
+    title: 'Video Game Personality Test',
+    category: 'Web Dev',
+    pages: [
+      {
+        type: 'overview',
+        role: 'Frontend Developer',
+        description: "A personality test that recommends video games based on the user's answers, built with HTML, CSS, and JavaScript, with mySQL Database integration. My first full stack program from class",
+        tech: ['HTML', 'CSS', 'JavaScript', 'mySQL'],
+        image: survey1,
+        links: [],
+      },
+      {
+        type: 'custom',
+        blocks: [
+          { type: 'heading', text: 'Video Game Personality Test' },
+          {
+            type: 'column',
+            children: [
+              { type: 'text', text: 'Survey Screens' },
+              { type: 'image', src: survey2, alt: 'Survey question screen' },
+              { type: 'image', src: survey3, alt: 'Survey question screen' },
+              { type: 'image', src: survey4, alt: 'Survey question screen' },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'bug-gladiator',
+    title: 'Bug Gladiator Card Game',
+    category: 'Product Design',
+    pages: [
+      {
+        type: 'overview',
+        role: 'Solo Developer',
+        description: "A card battler game that I developed for a class",
+        tech: ['Dextrous'],
+        image: gladiator1,
+        links: [{label:'Rulesheet', url:'https://docs.google.com/document/d/1_b8jVcpokbVyF9HljSbf1HGmvLDl24Lwb4v0XlcAIXw/edit?tab=t.0#heading=h.fzfvv1lq517x'},
+          {label:'Sellsheet',url:'https://docs.google.com/document/d/1_b8jVcpokbVyF9HljSbf1HGmvLDl24Lwb4v0XlcAIXw/edit?tab=t.lc84w4mfla6j'}],
+      },
+      {
+        type: 'custom',
+        blocks: [
+          { type: 'heading', text: 'Bug Gladiator Card Game' },
+          { type: 'text', text: 'Different Card Types'},
+          {
+            type: 'row',
+            children: [
+              { type: 'image', src: gladiator2, alt: 'Survey question screen' },
+              { type: 'image', src: gladiator3, alt: 'Survey question screen' },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  
 ];
 
 export default projects;

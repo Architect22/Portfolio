@@ -1,14 +1,12 @@
 import react from 'react';
-import Book from './Components/Book/Book.jsx';
+import MobileGate from './Components/Book/MobileGate.jsx';
 
 import './App.css'
 
 function App() {
 
   return (
-    <div className="Container">
-      <Book />
-    </div>
+    <MobileGate />
   )
 }
 

@@ -28,20 +28,33 @@ function groupBlocks(blocks) {
 
 const CustomPage = React.forwardRef(({ page, onExpand }, ref) => {
   const groups = groupBlocks(page.blocks);
+  const [firstGroup, ...restGroups] = groups;
 
   return (
     <div className={`page ${page.pageClassName || ''}`} style={page.pageStyle} ref={ref}>
       <div className="page-content custom">
-        {groups.map((group, i) => (
-          <div className="custom-section" key={i}>
-            {group.heading && <Block block={group.heading} onExpand={onExpand} />}
+        {firstGroup?.heading && <Block block={firstGroup.heading} onExpand={onExpand} />}
+
+        <div className="page-scroll">
+          {firstGroup && (
             <div className="custom-section-body">
-              {group.items.map((block, j) => (
+              {firstGroup.items.map((block, j) => (
                 <Block key={j} block={block} onExpand={onExpand} />
               ))}
             </div>
-          </div>
-        ))}
+          )}
+
+          {restGroups.map((group, i) => (
+            <div className="custom-section" key={i}>
+              {group.heading && <Block block={group.heading} onExpand={onExpand} />}
+              <div className="custom-section-body">
+                {group.items.map((block, j) => (
+                  <Block key={j} block={block} onExpand={onExpand} />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
       <PageHint />
     </div>

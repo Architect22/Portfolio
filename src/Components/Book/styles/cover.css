@@ -17,12 +17,13 @@
 }
 
 .page-content.cover h1 {
-  font-size: 1.6rem;
+  font-size: calc(1.6rem * var(--text-scale));
+  
   font-family: 'PixelFont';
   line-height: 1.6;
 }
 
 .page-content.cover p {
-  font-size: 0.75rem;
+  font-size: calc(0.75rem * var(--text-scale));
   opacity: 0.8;
 }
